@@ -86,7 +86,7 @@ while (true)
     StringBuilder stringBuilder = new();
 
     // Complete the chat.
-    AsyncResultCollection<StreamingChatCompletionUpdate> chatUpdates =
+    AsyncCollectionResult<StreamingChatCompletionUpdate> chatUpdates =
         client.CompleteChatStreamingAsync(messages, options);
 
     // Loop through the chat updates.
