@@ -28,7 +28,8 @@ switch (host)
         string openAIModel =
             ConsoleHelper.SelectFromOptions(
                 [Statics.GPT35TurboKey, Statics.GPT4Key,
-                Statics.GPT4TurboKey, Statics.GPT4oKey]);
+                Statics.GPT4TurboKey, Statics.GPT4oKey,
+                Statics.GPT4oMiniKey]);
 
         // Initialize the client.
         client = new(openAIModel, new ApiKeyCredential(openAIApiKey));
