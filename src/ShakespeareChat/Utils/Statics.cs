@@ -39,6 +39,12 @@ internal static class Statics
         = "gpt-4o";
 
     /// <summary>
+    ///     The key for GPT-4o-mini.
+    /// </summary>
+    public static string GPT4oMiniKey
+        = "gpt-4o-mini";
+
+    /// <summary>
     ///     Prompt for getting the OpenAI API key.
     /// </summary>
     public static string OpenAIKeyPrompt
