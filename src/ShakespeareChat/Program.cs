@@ -10,7 +10,9 @@ ConsoleHelper.ShowHeader();
 
 // Select the host.
 string host =
-    ConsoleHelper.SelectFromOptions([Statics.OpenAIKey, Statics.LocalLLMKey]);
+    ConsoleHelper.SelectFromOptions(
+        [Statics.OpenAIKey, Statics.OllamaLocalLLMKey,
+        Statics.LlamafileLocalLLMKey]);
 
 // Initialize the client.
 ChatClient? client = null;
@@ -51,6 +53,20 @@ switch (host)
             new(ollamaModel,
                 new ApiKeyCredential(ollamaApiKey),
                 new OpenAIClientOptions { Endpoint = ollamaEndpoint });
+
+        break;
+
+    case Statics.LlamafileLocalLLMKey:
+
+        // Set variables
+        string llamafileApiKey = "llamafile";
+        Uri llamafileEndpoint = new("http://127.0.0.1:8080");
+
+        // Initialize the client.
+        client =
+            new("LLaMA_CPP",
+                new ApiKeyCredential(llamafileApiKey),
+                new OpenAIClientOptions { Endpoint = llamafileEndpoint });
 
         break;
 }
