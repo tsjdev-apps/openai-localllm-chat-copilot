@@ -111,6 +111,11 @@ while (true)
     {
         foreach (ChatMessageContentPart contentPart in chatUpdate.ContentUpdate)
         {
+            if (chatUpdate.ContentUpdate.Equals("</s>"))
+            {
+                continue;
+            }
+
             ConsoleHelper.WriteToConsole(contentPart.Text);
             stringBuilder.Append(contentPart.Text);
         }
