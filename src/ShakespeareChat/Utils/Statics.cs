@@ -15,6 +15,12 @@ internal static class Statics
         = "Local LLM";
 
     /// <summary>
+    ///     The key for Llamafile Local LLM.
+    /// </summary>
+    public const string LlamafileLocalLLMKey
+        = "Llamafile (Local LLM)";
+
+    /// <summary>
     ///     The key for GPT-3.5 Turbo.
     /// </summary>
     public static string GPT35TurboKey

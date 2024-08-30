@@ -36,21 +36,21 @@ switch (host)
 
         break;
 
-    case Statics.LocalLLMKey:
+    case Statics.OllamaLocalLLMKey:
 
         // Set variables
-        string localApiKey = "ollama";
-        Uri localEndpoint = new("http://localhost:11434/v1");
+        string ollamaApiKey = "ollama";
+        Uri ollamaEndpoint = new("http://localhost:11434/v1");
 
         // Get the local LLM name.
-        string localModel =
-            ConsoleHelper.GetString(Statics.LocalLLMNamePrompt);
+        string ollamaModel =
+            ConsoleHelper.GetString(Statics.OllamaModelNamePrompt);
 
         // Initialize the client.
         client =
-            new(localModel,
-                new ApiKeyCredential(localApiKey),
-                new OpenAIClientOptions { Endpoint = localEndpoint });
+            new(ollamaModel,
+                new ApiKeyCredential(ollamaApiKey),
+                new OpenAIClientOptions { Endpoint = ollamaEndpoint });
 
         break;
 }
