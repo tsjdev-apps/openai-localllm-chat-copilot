@@ -111,7 +111,7 @@ while (true)
     {
         foreach (ChatMessageContentPart contentPart in chatUpdate.ContentUpdate)
         {
-            if (chatUpdate.ContentUpdate.Equals("</s>"))
+            if (contentPart.Text.Equals("</s>"))
             {
                 continue;
             }
