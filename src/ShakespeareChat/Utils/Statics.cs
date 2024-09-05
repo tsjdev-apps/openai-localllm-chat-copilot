@@ -9,10 +9,16 @@ internal static class Statics
         = "OpenAI";
 
     /// <summary>
-    ///     The key for Local LLM.
+    ///     The key for Ollama Local LLM.
     /// </summary>
-    public const string LocalLLMKey
-        = "Local LLM";
+    public const string OllamaLocalLLMKey
+        = "Ollama (Local LLM)";
+
+    /// <summary>
+    ///     The key for Llamafile Local LLM.
+    /// </summary>
+    public const string LlamafileLocalLLMKey
+        = "Llamafile (Local LLM)";
 
     /// <summary>
     ///     The key for GPT-3.5 Turbo.
@@ -53,8 +59,8 @@ internal static class Statics
     /// <summary>
     ///     Prompt for gettin the local LLM name.
     /// </summary>
-    public static string LocalLLMNamePrompt
-        = "Please insert your [yellow]local LLM name[/]:";
+    public static string OllamaModelNamePrompt
+        = "Please insert your [yellow]Ollama local LLM name[/]:";
 
     /// <summary>
     ///     System message for William Shakespeare.

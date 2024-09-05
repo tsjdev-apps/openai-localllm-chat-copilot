@@ -10,7 +10,9 @@ ConsoleHelper.ShowHeader();
 
 // Select the host.
 string host =
-    ConsoleHelper.SelectFromOptions([Statics.OpenAIKey, Statics.LocalLLMKey]);
+    ConsoleHelper.SelectFromOptions(
+        [Statics.OpenAIKey, Statics.OllamaLocalLLMKey,
+        Statics.LlamafileLocalLLMKey]);
 
 // Initialize the client.
 ChatClient? client = null;
@@ -36,21 +38,35 @@ switch (host)
 
         break;
 
-    case Statics.LocalLLMKey:
+    case Statics.OllamaLocalLLMKey:
 
         // Set variables
-        string localApiKey = "ollama";
-        Uri localEndpoint = new("http://localhost:11434/v1");
+        string ollamaApiKey = "ollama";
+        Uri ollamaEndpoint = new("http://localhost:11434/v1");
 
         // Get the local LLM name.
-        string localModel =
-            ConsoleHelper.GetString(Statics.LocalLLMNamePrompt);
+        string ollamaModel =
+            ConsoleHelper.GetString(Statics.OllamaModelNamePrompt);
 
         // Initialize the client.
         client =
-            new(localModel,
-                new ApiKeyCredential(localApiKey),
-                new OpenAIClientOptions { Endpoint = localEndpoint });
+            new(ollamaModel,
+                new ApiKeyCredential(ollamaApiKey),
+                new OpenAIClientOptions { Endpoint = ollamaEndpoint });
+
+        break;
+
+    case Statics.LlamafileLocalLLMKey:
+
+        // Set variables
+        string llamafileApiKey = "llamafile";
+        Uri llamafileEndpoint = new("http://127.0.0.1:8080");
+
+        // Initialize the client.
+        client =
+            new("LLaMA_CPP",
+                new ApiKeyCredential(llamafileApiKey),
+                new OpenAIClientOptions { Endpoint = llamafileEndpoint });
 
         break;
 }
@@ -95,6 +111,11 @@ while (true)
     {
         foreach (ChatMessageContentPart contentPart in chatUpdate.ContentUpdate)
         {
+            if (contentPart.Text.Equals("</s>"))
+            {
+                continue;
+            }
+
             ConsoleHelper.WriteToConsole(contentPart.Text);
             stringBuilder.Append(contentPart.Text);
         }
