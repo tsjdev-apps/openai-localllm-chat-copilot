@@ -42,7 +42,7 @@ switch (host)
 
         // Set variables
         string ollamaApiKey = "ollama";
-        Uri ollamaEndpoint = new("http://localhost:11434/v1");
+        Uri ollamaEndpoint = new("http://localhost:11434");
 
         // Get the local LLM name.
         string ollamaModel =
